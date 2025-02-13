@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Betaverse-main.sln"
+    "dotnet.defaultSolution": "Betaverse.sln"
 }
