@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4494503917192740842}
   - component: {fileID: 835054201967037627}
   - component: {fileID: 1699604310628280490}
-  - component: {fileID: 2862823230713912919}
   - component: {fileID: 6874941338883308550}
+  - component: {fileID: 36082965147832898}
   m_Layer: 0
   m_Name: '[BuildingBlock] Cube'
   m_TagString: trash
@@ -62,7 +62,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384220189695223878}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2262909211866254672, guid: 35ffbbb07b9d0f04c95349e8a50aa366, type: 3}
 --- !u!23 &1699604310628280490
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb7759c73d3849647bb2537b331355df, type: 2}
+  - {fileID: 2100000, guid: a1cac5cdca1118948ba15f52191b03d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,27 +108,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2862823230713912919
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7384220189695223878}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6874941338883308550
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,6 +135,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!135 &36082965147832898
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7384220189695223878}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.703305
+  m_Center: {x: -0.0027409792, y: 0, z: 0.0027188964}
 --- !u!1 &8239019144694958777
 GameObject:
   m_ObjectHideFlags: 0
