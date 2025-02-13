@@ -16061,16 +16061,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 1575834054324949420, guid: e5e2269eb3d1c433d90f0b52462f5e4d, type: 3}
   - {fileID: 1575834054324949420, guid: 434aaa5eb80c14c49b9267be8f45e407, type: 3}
-  - {fileID: 1575834054324949420, guid: 7ec1023d0e8939d4b959bfce1005147b, type: 3}
   minObjectsPerPrefab: 1
   maxObjectsPerPrefab: 5
   minRadius: 1
   Labels: 4
   surfaceType: -1
   maxTryCount: 1000
-  maxSpawnCount: 300
+  maxSpawnCount: 100
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -19692,6 +19690,8 @@ MonoBehaviour:
   waveParticles: {fileID: 358592128}
   holePrefab: {fileID: 308889827}
   waterContainer: {fileID: 1231631876}
+  triggerAudioClip: {fileID: 8300000, guid: a8f22ab5c5cf8a7429747a8e76576fcb, type: 3}
+  waterAudioClip: {fileID: 8300000, guid: 081e83415827fd04c8ef3dc48cb9ea69, type: 3}
 --- !u!1 &1721124128
 GameObject:
   m_ObjectHideFlags: 0

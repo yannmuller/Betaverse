@@ -19,14 +19,14 @@ public class RayIntersection : MonoBehaviour
     [Header("Cylinder Ray Settings")]
     [Tooltip("Assign the first cylinder GameObject that represents the ray.")]
     public GameObject cylinderRay;
-    
+
     [Tooltip("Thickness (radius) of the first cylinder.")]
     public float cylinderRadius = 0.05f;
 
     [Header("Thicker Cylinder Ray Settings")]
     [Tooltip("Assign the second (thicker) cylinder GameObject that represents the ray.")]
     public GameObject cylinderRayThick;
-    
+
     [Tooltip("Thickness (radius) of the thicker cylinder. Set this to be slightly larger than the first.")]
     public float cylinderThickRadius = 0.07f;  // Slightly thicker than cylinderRadius
 
@@ -55,6 +55,16 @@ public class RayIntersection : MonoBehaviour
 
     // Timer to track how long the object has been inside the water container.
     private float waterDwellTime = 0f;
+
+    [Header("Audio Settings")]
+    [Tooltip("Audio clip to play in a loop when the trigger is pressed.")]
+    public AudioClip triggerAudioClip;
+
+    [Tooltip("Audio clip to play in a loop when inside the water container.")]
+    public AudioClip waterAudioClip;
+
+    private AudioSource triggerAudioSource;
+    private AudioSource waterAudioSource;
 
     void Start()
     {
@@ -111,6 +121,17 @@ public class RayIntersection : MonoBehaviour
         {
             Debug.LogError("Water container GameObject not found in the scene.");
         }
+
+        // Initialize audio sources for trigger and water container sounds.
+        triggerAudioSource = gameObject.AddComponent<AudioSource>();
+        triggerAudioSource.clip = triggerAudioClip;
+        triggerAudioSource.loop = true;
+        triggerAudioSource.playOnAwake = false;
+
+        waterAudioSource = gameObject.AddComponent<AudioSource>();
+        waterAudioSource.clip = waterAudioClip;
+        waterAudioSource.loop = true;
+        waterAudioSource.playOnAwake = false;
     }
 
     void Update()
@@ -138,12 +159,29 @@ public class RayIntersection : MonoBehaviour
         // Check if the right index trigger is pressed.
         if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
-            // Only add to the cumulative trigger time and process the ray if we haven't exceeded 10 seconds.
+            // Only play trigger audio if cumulative trigger time is below 10 seconds.
+            if (cumulativeTriggerTime < 10f)
+            {
+                if (triggerAudioSource != null && !triggerAudioSource.isPlaying)
+                {
+                    triggerAudioSource.Play();
+                }
+            }
+            else
+            {
+                // Ensure trigger audio is stopped if time has reached 10.
+                if (triggerAudioSource != null && triggerAudioSource.isPlaying)
+                {
+                    triggerAudioSource.Stop();
+                }
+            }
+
+            // Process the ray and accumulate time only if below 10 seconds.
             if (cumulativeTriggerTime < 10f)
             {
                 // Set vibration for the ray shooting (this will be overridden by water container feedback if inside water).
                 OVRInput.SetControllerVibration(1.0f, 10.0f, OVRInput.Controller.RTouch);
-               
+
                 // Increment the cumulative time by the time elapsed since the last frame.
                 cumulativeTriggerTime += Time.deltaTime;
 
@@ -211,7 +249,7 @@ public class RayIntersection : MonoBehaviour
                 // Once 10 cumulative seconds have been reached, disable the ray shooting.
                 Debug.Log("Ray shooting disabled: 10 cumulative seconds reached.");
                 OVRInput.SetControllerVibration(0.0f, 0.0f, OVRInput.Controller.RTouch);
-                
+
                 // Hide both cylinder rays if they are active.
                 if (cylinderRay != null && cylinderRay.activeSelf)
                 {
@@ -233,6 +271,13 @@ public class RayIntersection : MonoBehaviour
         {
             // When the trigger is not pressed, disable ray shooting vibration.
             OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
+
+            // Stop the trigger audio if it is playing.
+            if (triggerAudioSource != null && triggerAudioSource.isPlaying)
+            {
+                triggerAudioSource.Stop();
+            }
+
             // Hide the cylinder rays and stop the particle system.
             if (cylinderRay != null && cylinderRay.activeSelf)
             {
@@ -265,6 +310,12 @@ public class RayIntersection : MonoBehaviour
                 // Apply haptic feedback (using the same frequency as before, adjust as needed).
                 OVRInput.SetControllerVibration(10.0f, hapticAmplitude, OVRInput.Controller.RTouch);
 
+                // Play the water audio loop if not already playing.
+                if (waterAudioSource != null && !waterAudioSource.isPlaying)
+                {
+                    waterAudioSource.Play();
+                }
+
                 // Only reset the cumulative trigger timer if the player has remained for 3 seconds.
                 if (waterDwellTime >= 3f)
                 {
@@ -278,6 +329,11 @@ public class RayIntersection : MonoBehaviour
             {
                 // Not inside the water container: reset the water dwell timer.
                 waterDwellTime = 0f;
+                // Stop the water audio if it's playing.
+                if (waterAudioSource != null && waterAudioSource.isPlaying)
+                {
+                    waterAudioSource.Stop();
+                }
             }
         }
 
@@ -291,7 +347,7 @@ public class HoleScaleAnimation : MonoBehaviour
 {
     [Tooltip("Duration for the scale animation in seconds.")]
     public float animationDuration = 0.25f;
-    
+
     [Tooltip("The target scale the hole will reach (set by the spawner).")]
     public Vector3 targetScale = Vector3.one;
 
