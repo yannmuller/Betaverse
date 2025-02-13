@@ -11,7 +11,7 @@ public class RoomSpawner : MonoBehaviour
     public int minObjectsPerPrefab = 1;
     public int maxObjectsPerPrefab = 5;
 
-    public float minRadius = 0.5f;
+    public float minRadius = 2.5f;
     public MRUKAnchor.SceneLabels Labels = ~(MRUKAnchor.SceneLabels)0;
     public MRUK.SurfaceType surfaceType = (MRUK.SurfaceType)~0;
     public int maxTryCount = 100;

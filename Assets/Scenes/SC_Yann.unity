@@ -16077,7 +16077,7 @@ MonoBehaviour:
   Labels: 4
   surfaceType: -1
   maxTryCount: 1000
-  maxSpawnCount: 50
+  maxSpawnCount: 100
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
