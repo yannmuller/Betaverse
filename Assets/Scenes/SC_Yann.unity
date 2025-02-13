@@ -2782,8 +2782,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
   m_PrefabInstance: {fileID: 1774848120}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &270600179
-MeshCollider:
+--- !u!114 &270600180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270600175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdccc09a474d55e40aa300dca8bfa962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &270600181
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2800,22 +2812,9 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
---- !u!114 &270600180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270600175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdccc09a474d55e40aa300dca8bfa962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Size: {x: 0.015, y: 0.015, z: 0.001}
+  m_Center: {x: 0, y: 0, z: -0.005}
 --- !u!1 &274254086
 GameObject:
   m_ObjectHideFlags: 0
@@ -20327,7 +20326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.175
+      value: 0.273
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20375,10 +20374,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 270600179}
+      addedObject: {fileID: 270600180}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 270600180}
+      addedObject: {fileID: 270600181}
   m_SourcePrefab: {fileID: 100100000, guid: 6142627a7f93a784b9d5ee90934b7ad3, type: 3}
 --- !u!1 &1775853577
 GameObject:
